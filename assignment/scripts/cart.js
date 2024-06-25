@@ -3,40 +3,52 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 let basket = [];
 const maxItems = 5;
-const addEraserBtn = document.getElementById('add-eraser-to-cart');
-const addNotebookBtn = document.getElementById('add-notebook-to-cart');
-const addPencilBtn = document.getElementById('add-pencil-to-cart');
-const addRulerBtn = document.getElementById('add-ruler-to-cart');
-const cartItems = document.getElementById('cart-items');
-const clearCartBtn = document.getElementById('clear-cart');
-let itemCount = 0;
+let full = false;
 
 function addItem(item) {
-    basket.push(item);
-    console.log(basket);
-    return true;
+        isFull();
+        if (!full) {
+        basket.push(item);
+        return true;
+        } else {
+            return false;
+        }
+    }
+
+function listItems() {
+    for (i = 0; i < basket.length; i++){
+        console.log(basket[i]);
+    }
 };
 
-function listItem(item){
-for (item of basket) {
-
-}
-}
-function removeItem() {
-
+function isFull() {
+    if (basket.length < maxItems) {
+        return full = false;
+    } else {
+        return full = true;
+    }
 };
+
 function empty() {
-    basket = [];
-    console.log(basket);
+basket.length = 0;
+};
+
+basket.push('Kale', 'Spinach', 'Swiss Chard', 'Arugula', 'Bok choy')
+console.log("Starting Basket is:", basket);
+function removeItem (item) {    
+    if (basket.includes(item)) {
+        let i = basket.indexOf(item);
+        let removedItem = basket.splice(i, 1);
+        let convertedItem = removedItem.toString();
+        return convertedItem;
+    } else {
+        return null;
+    }
 }
 
-addEraserBtn.addEventListener('click', ()=> {
-    addItem('Eraser');
-})
+console.log("the removed basket item is:", removeItem("Spinach"))
+console.log("the new basket is:", basket)
 
-clearCartBtn.addEventListener('click', ()=>{
-empty();
-})
 
 // DO NOT MODIFY
 // Used for automated testing
