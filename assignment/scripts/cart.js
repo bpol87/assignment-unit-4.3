@@ -3,17 +3,23 @@ console.log('***** Cart Functions *****');
 // We want to see how you are testing your code!!!
 let basket = [];
 const maxItems = 5;
-let full = false;
 
 function addItem(item) {
-        isFull();
+        let full = isFull();
         if (!full) {
         basket.push(item);
         return true;
         } else {
             return false;
         }
+}
+function isFull() {
+    if (basket.length < maxItems) {
+        return false;
+    } else {
+        return true;
     }
+};
 
 function listItems() {
     for (i = 0; i < basket.length; i++){
@@ -21,13 +27,7 @@ function listItems() {
     }
 };
 
-function isFull() {
-    if (basket.length < maxItems) {
-        return full = false;
-    } else {
-        return full = true;
-    }
-};
+
 
 function empty() {
 basket.length = 0;
